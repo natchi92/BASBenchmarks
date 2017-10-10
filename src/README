@@ -1,1 +1,12 @@
-test
+Contents:
+
+1. All Parameters used by benchmark: BASParameters.m
+2. Models of the individual BAS Components labelled as XXXModel.m where "XXX" corresponds to the respective component
+3. File to initiate and simulate the whole BAS set-up being considered (cf. Fig 1 in paper): WholeBAS_setup.m
+4. Core file: createModelm: Used by all model files. It is a class file which,
+  (i) initialises the models based on their underlying structure and input system matrices;
+  (ii) converts the models into symbolic models
+  (iii) allows to simulate the models
+  (iv) provides option to perform a step response of the underlying model (for analysis)
+5. Auxiliary file: PlotFigures.m: plots simulation output over specified time horizon
+
