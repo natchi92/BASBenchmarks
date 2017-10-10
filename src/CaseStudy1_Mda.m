@@ -72,7 +72,7 @@ Tsa(32+96*3:48+96*3)=20.*ones(17,1);
 Tsa(52+96*3:72+96*3)=20.*ones(21,1);
 
 % Defining disturbance signal 
-D   = [500*randn(T,1) + 100 500*randn(T,1) + 100  ones(T,1)];    
+D   = [100*randn(T,1) + 500 100*randn(T,1) + 500  ones(T,1)];    
 
 % Simulate model over given time horizon T 
 Tz1_y      = runModel(Z1m,[ 20  20 Trwrss Trwrss]', Tsa,D,T);
