@@ -45,7 +45,7 @@ p = (Radiator.k0*w*Tswb);
 
 Fc = [d g k p]';
 
-Cc = diag([1 1 0 0]);
+Cc = ([1 1 0 0]);
 Z1m=createModel;
 
 % Creation of symbolic deterministic model
