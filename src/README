@@ -10,14 +10,20 @@ Contents of folder:
    (i)  CaseStudy1_Md.m : Deterministic model 
    (ii) CaseStudy1_Mda.m: Deterministic model with additive noise
    (iii)CaseStudy1_Ms.m : Stochastic model
-   
 
-5. File describing hyrbid model in Case Study 3: CaseStudy3_Hybrid.xml (In xml format to allow for direct loading into SpaceEx)
+5. Files describing models presented in Case Study 2 with option to simulate model over given time horizon:
+   (i)  CaseStudy2_Mc.m  : Model with large number of continuous variables (dimension 7)
+   (ii) CaseStudy2_Mc4.m : Abstract model (dimension 4)
+   (iii)CaseStudy2_Mc3.m : Abstract model (dimension 3)
+   (iv) CaseStudy2_Mc2.m : Abstract model (dimension 2)
+   (v)  CaseStudy2_Mc1.m : Abstract model (dimension 1)
 
-6. Core file: createModel.m: Used by all model files. It is a class file which,
+6. File describing hyrbid model in Case Study 3: CaseStudy3_Hybrid.xml (In xml format to allow for direct loading into SpaceEx)
+
+7. Core file: createModel.m: Used by all model files. It is a class file which,
   (i) initialises the models based on their underlying structure and input system matrices;
   (ii) converts the models into symbolic models
   (iii) allows to simulate the models
   (iv) provides option to perform a step response of the underlying model (for analysis)
-7. Auxiliary file: PlotFigures.m: plots simulation output over specified time horizon
+8. Auxiliary file: PlotFigures.m: plots simulation output over specified time horizon
 
