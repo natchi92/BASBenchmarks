@@ -11,10 +11,13 @@ Contents of folder:
    (ii) CaseStudy1_Mda.m: Deterministic model with additive noise
    (iii)CaseStudy1_Ms.m : Stochastic model
    
-5. Core file: createModel.m: Used by all model files. It is a class file which,
+
+5. File describing hyrbid model in Case Study 3: CaseStudy3_Hybrid.xml (In xml format to allow for direct loading into SpaceEx)
+
+6. Core file: createModel.m: Used by all model files. It is a class file which,
   (i) initialises the models based on their underlying structure and input system matrices;
   (ii) converts the models into symbolic models
   (iii) allows to simulate the models
   (iv) provides option to perform a step response of the underlying model (for analysis)
-6. Auxiliary file: PlotFigures.m: plots simulation output over specified time horizon
+7. Auxiliary file: PlotFigures.m: plots simulation output over specified time horizon
 
