@@ -44,7 +44,7 @@ p = (Radiator.k0*w*Tswb);
 
 Fc = [d g k p]';
 
-Cc = diag([1 1 0 0]);
+Cc = ([1 1 0 0]);
 
 Sigma =diag([Zone1.Tz.sigma Zone2.Tz.sigma Radiator.rw.sigma Radiator.rw.sigma]);
 Z1m=createModel;
