@@ -34,6 +34,7 @@ AHU.sa.k0    = 2.0167e-05;                                                  % Co
 AHU.sa.k1    = 0.0183;                                                      % Constant k1 = (UA)a/(Cpa*rho_a*Vahu)
 AHU.rw.k0    = 0.0109;                                                      % Constant k0 = Cpw/(Cpw*rho_h*Vahu)
 AHU.rw.k1    = 0.0011;                                                      % Constant k1 = (UA)a/(Cpw*rho_h*Vahu)
+AHU.rw.Trwss = 35;                                                          % AHU return water steady state temperature [deg C]
 AHU.w_a      = 1/60;                                                        % Nominal rate of water flow [m3/min]
 AHU.w_max    = 10/60;                                                       % Max rate of water flow [m3/min] 
 AHU.sa.sigma =0.1;
