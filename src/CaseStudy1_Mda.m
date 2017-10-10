@@ -53,7 +53,7 @@ Fc(2,3) = g;
 Fc(3,3) = k;
 Fc(4,3) = p;
 
-Cc = diag([1 1 0 0]);
+Cc = ([1 1 0 0]);
 Z1m=createModel;
 % Defining Deterministic Model corresponding matrices
 Z1m=InitialiseModel(Z1m,'l','d',Ac,Bc,Cc,Fc,[],[],Ts,0);
@@ -80,4 +80,3 @@ Tz1_y      = runModel(Z1m,[ 20  20 Trwrss Trwrss]', Tsa,D,T);
 % Plot Results
 title={{'Zone 1 temperature (^oC)'},{'Zone 2 temperature (^oC)'}};
 plotFigures(1:T,Tz1_y(1:2,1:T),title); 
-
