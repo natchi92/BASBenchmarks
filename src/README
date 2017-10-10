@@ -2,7 +2,7 @@ Contents of folder:
 
 1. All Parameters used by benchmark: BASParameters.m
 
-2. Models of the individual BAS Components labelled as XXXModel.m where "XXX" corresponds to the respective component
+2. Models of the individual BAS Components labelled as XXModel.m where "XX" corresponds to the respective component
 
 3. File to setup and simulate the whole BAS set-up being considered (cf. Fig 1 in paper): WholeBAS_setup.m
 
