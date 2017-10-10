@@ -70,7 +70,7 @@ Fc(6,7) = (AHU.rw.alpha3*Trwass)/Zone2.Cn;
 Fc(7,7) = (AHU.rw.alpha3*Trwass)/((Zone1.Cn +Zone2.Cn)/2);
 
 
-Cc = diag([1 0 0 0 0 0 0 ]);
+Cc = ([1 0 0 0 0 0 0 ]);
  
 % Creation of symbolic deterministic model
 Z1m=createModel;
