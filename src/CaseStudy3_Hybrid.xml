@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="fan_template">
+    <note>turn_off_fan</note>
+    <param name="Tz1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="Tsa" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <location id="1" name="off_nomixing" x="222.5" y="328.5" width="285.0" height="79.0">
+      <invariant>Tsa &gt;= 15 &amp; Tsa &lt;=30&amp;Tz1&gt;=10 &amp;Tz1 &lt;= 25</invariant>
+      <flow>Tz1'==-0.0116*Tz1+0.2565 &amp;
+Tsa'==0.0183*Tz1-0.0183*Tsa</flow>
+    </location>
+    <location id="2" name="med_open" x="622.0" y="310.0" width="244.0" height="84.0">
+      <note>Tz1&gt;=10&amp;Tz1&lt;=30&amp;Tsa&gt;=15&amp;Tsa&lt;=30</note>
+      <invariant>Tsa &gt;= 15 &amp; Tsa &lt;=30</invariant>
+      <flow>Tz1'==-0.0292*Tz1+0.0176*Tsa + 0.2565&amp;
+Tsa'==0.0183*Tz1 -0.0185*Tsa + 0.005</flow>
+    </location>
+    <location id="3" name="med_closed" x="617.0" y="454.0" width="276.0" height="96.0">
+      <invariant>Tsa &gt;= 15 &amp; Tsa &lt;=30</invariant>
+      <flow>Tz1'==-0.0292*Tz1 + 0.0176*Tsa + 0.2565 &amp;
+Tsa'== 0.0185*Tz1 -0.0185*Tsa</flow>
+    </location>
+    <location id="4" name="high_open" x="947.0" y="310.0" width="322.0" height="84.0">
+      <invariant>Tsa &gt;= 15 &amp; Tsa &lt;=30</invariant>
+      <flow>Tz1'==-0.038*Tz1 + 0.0264*Tsa + 0.2565 &amp;
+Tsa'== 0.0183*Tz1 -0.0186*Tsa + 0.0076</flow>
+    </location>
+    <location id="5" name="high_closed" x="952.0" y="457.0" width="306.0" height="80.0">
+      <invariant>Tsa &gt;= 15 &amp; Tsa &lt;=30</invariant>
+      <flow>Tz1'==-0.038*Tz1 + 0.0264*Tsa + 0.2565 &amp;
+Tsa'== 0.0186*Tz1 -0.0186*Tsa</flow>
+    </location>
+    <transition source="1" target="2">
+      <guard>15&lt;Tz1&lt;=16</guard>
+      <labelposition x="-53.0" y="-41.0" width="128.0" height="50.0" />
+    </transition>
+    <transition source="1" target="3">
+      <guard>17&lt;Tz1&lt;=18</guard>
+      <labelposition x="-10.0" y="-33.0" width="138.0" height="50.0" />
+    </transition>
+    <transition source="2" target="1" bezier="true">
+      <guard>Tz1 &gt;= 21</guard>
+      <labelposition x="-43.0" y="-38.0" width="96.0" height="54.0" />
+      <middlepoint x="398.75" y="255.25" />
+    </transition>
+    <transition source="3" target="1" bezier="true">
+      <guard>Tz1 &gt;= 21</guard>
+      <labelposition x="-1.0" y="-40.0" width="76.0" height="50.0" />
+      <middlepoint x="383.75" y="450.75" />
+    </transition>
+    <transition source="2" target="3" bezier="true">
+      <guard>Tz1 &gt;= 19</guard>
+      <labelposition x="-73.0" y="0.0" width="110.0" height="50.0" />
+      <middlepoint x="577.0" y="375.5" />
+    </transition>
+    <transition source="3" target="2" bezier="true">
+      <guard>Tz1&gt;=18</guard>
+      <labelposition x="-12.0" y="-15.0" width="98.0" height="50.0" />
+      <middlepoint x="666.0" y="383.5" />
+    </transition>
+    <transition source="2" target="4">
+      <guard>Tz1&lt;17</guard>
+      <labelposition x="-33.0" y="-8.0" width="74.0" height="50.0" />
+    </transition>
+    <transition source="4" target="5">
+      <guard>Tz1&gt;=19</guard>
+      <labelposition x="-71.0" y="-24.0" width="74.0" height="50.0" />
+      <middlepoint x="910.5" y="382.0" />
+    </transition>
+    <transition source="5" target="4">
+      <guard>Tz1&gt;=18</guard>
+      <labelposition x="7.0" y="-22.0" width="76.0" height="50.0" />
+      <middlepoint x="995.5" y="386.0" />
+    </transition>
+    <transition source="3" target="5">
+      <guard>Tz1&lt;17</guard>
+      <labelposition x="-42.0" y="-43.0" width="86.0" height="50.0" />
+    </transition>
+    <transition source="4" target="1" bezier="true">
+      <guard>Tz1&gt;=21</guard>
+      <labelposition x="109.0" y="-36.0" width="96.0" height="50.0" />
+      <middlepoint x="437.25" y="214.25" />
+    </transition>
+    <transition source="5" target="1" bezier="true">
+      <guard>Tz1&gt;=21</guard>
+      <labelposition x="39.0" y="-34.0" width="76.0" height="50.0" />
+      <middlepoint x="342.25" y="520.75" />
+    </transition>
+    <transition source="1" target="4" bezier="true">
+      <guard>Tz1&lt;=15</guard>
+      <labelposition x="-10.0" y="-49.0" width="92.0" height="50.0" />
+      <middlepoint x="449.25" y="172.25" />
+    </transition>
+    <transition source="1" target="5" bezier="true">
+      <guard>Tz1&lt;=17 &amp; Tz1&gt;15</guard>
+      <labelposition x="36.0" y="-20.0" width="136.0" height="50.0" />
+      <middlepoint x="320.75" y="557.75" />
+    </transition>
+  </component>
+  <component id="Mixer_Contr">
+    <param name="open" type="label" local="false" />
+    <param name="close" type="label" local="false" />
+    <param name="Tz1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <location id="1" name="Tm_Tz" x="257.0" y="112.0" width="136.0" height="74.0">
+      <invariant>Tz1 &lt; 25 &amp; Tz1 &gt; 10</invariant>
+    </location>
+    <location id="2" name="Tm_Tout" x="520.0" y="109.0" width="134.0" height="64.0">
+      <invariant>Tz1&gt;=18 &amp; Tz1 &lt;19</invariant>
+    </location>
+    <transition source="1" target="2" bezier="true">
+      <label>open</label>
+      <guard>Tz1&gt;=18</guard>
+      <labelposition x="-58.0" y="-57.0" width="120.0" height="50.0" />
+      <middlepoint x="375.5" y="93.5" />
+    </transition>
+    <transition source="2" target="1" bezier="true">
+      <label>close</label>
+      <guard>Tz1 &gt;= 19</guard>
+      <labelposition x="-60.0" y="15.0" width="126.0" height="54.0" />
+      <middlepoint x="379.5" y="144.5" />
+    </transition>
+  </component>
+  <component id="FanController">
+    <param name="turn_on1" type="label" local="false" />
+    <param name="turn_on2" type="label" local="false" />
+    <param name="m" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="Tz1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="turn_off" type="label" local="false" />
+    <location id="1" name="fan_off" x="293.0" y="168.0">
+      <invariant>Tz1&lt;18 &amp; Tz1 &gt;10</invariant>
+    </location>
+    <location id="2" name="fan_on" x="563.0" y="167.0" width="128.0" height="60.0">
+      <invariant>Tz1&gt;=15 &amp; Tz1 &lt; 21</invariant>
+    </location>
+    <transition source="1" target="2">
+      <label>turn_on2</label>
+      <guard>Tz1&lt;=18 &amp; Tz1 &gt;15</guard>
+      <assignment>m:=1</assignment>
+      <labelposition x="-66.0" y="-44.0" width="128.0" height="60.0" />
+    </transition>
+    <transition source="1" target="2" bezier="true">
+      <label>turn_on1</label>
+      <guard>Tz1&lt;=15</guard>
+      <assignment>m:=1</assignment>
+      <labelposition x="-49.0" y="-58.0" width="104.0" height="52.0" />
+      <middlepoint x="414.0" y="119.5" />
+    </transition>
+    <transition source="2" target="1" bezier="true">
+      <label>turn_off</label>
+      <guard>Tz1 &gt;= 21</guard>
+      <assignment>m:= 0</assignment>
+      <labelposition x="-71.0" y="18.0" width="154.0" height="60.0" />
+      <middlepoint x="417.0" y="212.0" />
+    </transition>
+  </component>
+  <component id="system">
+    <note>A heating system heated using AHU air duct. The controls are the Fan and the AHU damper which controls the mixing between outside air and the zone air.</note>
+    <param name="Tz1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="Tsa" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <bind component="fan_template" as="fan_template_1">
+      <map key="Tz1">Tz1</map>
+      <map key="Tsa">Tsa</map>
+    </bind>
+  </component>
+</sspaceex>
+
