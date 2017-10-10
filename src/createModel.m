@@ -637,6 +637,37 @@ classdef createModel
                                 
                                 y(:,i) = sys.C*x(:,i);
                             end
+                        case 4
+                            
+                            x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),x_init(3,1),x_init(4,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4));
+                            
+                            for i = 1:T
+                                
+                                x(:,i+1) = sys.tr(x(1,i),x(2,i),x(3,i),x(4,i), U(i,1), D(i,1),D(i,2),D(i,3),D(i,4));
+                                
+                                y(:,i) = sys.C*x(:,i);
+                            end
+                            
+                          case 5
+                            
+                            x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),x_init(3,1),x_init(4,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),D(1,5));
+                            
+                            for i = 1:T
+                                
+                                x(:,i+1) = sys.tr(x(1,i),x(2,i),x(3,i),x(4,i), U(i,1), D(i,1),D(i,2),D(i,3),D(i,4),D(i,5));
+                                
+                                y(:,i) = sys.C*x(:,i);
+                            end
+                            case 6
+                            
+                            x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),x_init(3,1),x_init(4,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),D(1,5),D(1,6));
+                            
+                            for i = 1:T
+                                
+                                x(:,i+1) = sys.tr(x(1,i),x(2,i),x(3,i),x(4,i), U(i,1), D(i,1),D(i,2),D(i,3),D(i,4),D(i,5),D(i,6));
+                                
+                                y(:,i) = sys.C*x(:,i);
+                            end
                     end
                     
                     
@@ -644,16 +675,16 @@ classdef createModel
                     switch size(sys.B,2)
                         case 1
                             if sys.Noise == 'd'
-                                x(:,1) =  sys.tr(x_init,U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),D(1,5),D(1,6),D(1,7));
+                                x(:,1) =  sys.tr(x_init(1,1),x_init(2,1),x_init(3,1),x_init(4,1),x_init(5,1), x_init(6,1), x_init(7,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),D(1,5),D(1,6),D(1,7));
                             else
-                                x(:,1) =  sys.tr(x_init,U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),D(1,5),D(1,6),D(1,7),0);
+                                x(:,1) =  sys.tr(x_init(1,1),x_init(2,1),x_init(3,1),x_init(4,1),x_init(5,1), x_init(6,1), x_init(7,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),D(1,5),D(1,6),D(1,7),0);
                             end
                             for i = 1:T
                                 if sys.Noise == 'd'
-                                    x(:,i+1) = sys.tr(x(1,i),U(i,1),D(i,1),D(i,2),D(i,3),D(i,4),D(i,5),D(i,6),D(i,7)); 
+                                    x(:,i+1) = sys.tr(x(1,i),x(2,i),x(3,i),x(4,i),x(5,i), x(6,i), x(7,i),U(i,1),D(i,1),D(i,2),D(i,3),D(i,4),D(i,5),D(i,6),D(i,7)); 
                                 else
                                     s(1,i) = sum(sys.dW((i-1)+1:i)); % Weiner Increment
-                                    x(:,i+1) = sys.tr(x(1,i),U(i,1),D(i,1),D(i,2),D(i,3),D(i,4),D(i,5),D(i,6),D(i,7),s(1,i));
+                                    x(:,i+1) = sys.tr(x(1,i),x(2,i),x(3,i),x(4,i),x(5,i), x(6,i), x(7,i),U(i,1),D(i,1),D(i,2),D(i,3),D(i,4),D(i,5),D(i,6),D(i,7),s(1,i));
                                 end
                                 y(:,i) = sys.C*x(:,i);
                             end
@@ -706,4 +737,4 @@ classdef createModel
         
     end
     
-e
+end
