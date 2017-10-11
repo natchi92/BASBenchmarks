@@ -1,8 +1,3 @@
-% Plot Figures: function to plot series of subplots based 
-% on the size of Y data matrix
-% author: Nathalie Cauchi
-% -------------------------------------------------------
-
 function plotFigures(X1, Y,heading)
 %  X:  vector of x data
 %  Y:  matrix of y data
@@ -30,5 +25,9 @@ for i = 1:size(Y,1)
 
         box(subplot1,'on');
         grid(subplot1,'on');
-  
+         % Set the remaining axes properties
+       % xtick = 1:4:k;
+       % set(subplot1,'XTick',xtick','XTickLabel',num2str(1:72)');
+        % Create legend
+       % legend(subplot1,'show');
 end

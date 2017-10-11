@@ -21,38 +21,37 @@ Tsp   = Zone1.Tsp;
 Trwass= AHU.rw.Trwss;
 Pout1 = Radiator.Zone1.Prad;    
 m1    = Zone1.m;
-w     = Radiator.w_r;
-
+Zone1.Rn = 0.45*60;
+Zone1.Rout=0.12*60;
+Zone1.Cz = 154.56;
+Zone1.Cn = 52.45;
 % Defining Deterministic Model corresponding matrices
 Ac      = zeros(4);
-Ac(1,1) = -(3/(Zone1.Rn*Zone1.Cz))-Materials.air.Cpa*m1/Zone1.Cz - (Pout1*Radiator.alpha2)/Zone1.Cz;
+Ac(1,1) = -(3/(Zone1.Rn*Zone1.Cz))-((Materials.air.Cpa*m1)/(Zone1.Cz)) - (Pout1*Radiator.alpha2)/Zone1.Cz;
 Ac(1,2) = 1/(Zone1.Rn*Zone1.Cz);
 Ac(1,3) = 1/(Zone1.Rn*Zone1.Cz);
 Ac(1,4) = 1/(Zone1.Rn*Zone1.Cz);
-
 Ac(2,1) = 1/(Zone1.Rn*Zone1.Cn);
 Ac(2,2) = -(1/(Zone1.Rn*Zone1.Cn))-(1/(Zone1.Rout*Zone1.Cn)) - (AHU.rw.alpha3)/Zone1.Cn;             
 Ac(3,1) = 1/(Zone1.Rn*Zone1.Cn);
 Ac(3,3) = -(1/(Zone1.Rn*Zone1.Cn))-(1/(Zone1.Rout*Zone1.Cn)) - (AHU.rw.alpha3)/Zone1.Cn;
-
 Ac(4,1) = 1/(Zone1.Rn*Zone1.Cn);
-Ac(4,4) = -(1/(Zone1.Rn*Zone1.Cn))-(1/(Zone2.Rn*Zone2.Cn)) - (AHU.rw.alpha3)/((Zone1.Cn+Zone2.Cn)/2);
+Ac(4,4) = -(1/(Zone1.Rn*Zone1.Cn))-(1/(Zone2.Rn*Zone2.Cn)) - (AHU.rw.alpha3)/(Zone1.Cn);
+Bc      = ((Materials.air.Cpa*m1)/(Zone1.Cz));
 
-Bc      = Materials.air.Cpa*m1/Zone1.Cz;
+Fc      = zeros(4,6);
 
-Fc = zeros(4,6);
- 
 Fc(1,3) = Zone1.mu/Zone1.Cz;
 Fc(1,4) = Pout1*Radiator.alpha2/Zone1.Cz;
 Fc(1,6) = (Pout1*Radiator.alpha1 + Zone1.zeta)/Zone1.Cz;
 
 Fc(2,1) = Zone1.alpha*Zone1.A_w*Zone1.iota/(Zone1.Cn) + 1/(Zone1.Rout*Zone1.Cn);
 Fc(2,6) = Zone1.alpha*Zone1.A_w*Zone1.gamma/(Zone1.Cn) + (AHU.rw.alpha3*Trwass)/Zone1.Cn;
-Fc(3,2) = -1/(Zone1.Rout*Zone1.Cn);
+Fc(3,2) = 1/(Zone1.Rout*Zone1.Cn);
 Fc(3,6) = (AHU.rw.alpha3*Trwass)/Zone1.Cn;
 
 Fc(4,5) = (1/(Zone2.Rn*Zone2.Cn));
-Fc(4,6) = (AHU.rw.alpha3*Trwass)/((Zone1.Cn +Zone2.Cn)/2);
+Fc(4,6) = (AHU.rw.alpha3*Trwass)/(Zone1.Cn);
 
 
 Cc = ([1 0 0 0]);

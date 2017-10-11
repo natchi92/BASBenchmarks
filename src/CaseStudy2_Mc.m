@@ -9,7 +9,7 @@
 % -------------------------------------------------------
 % -------------------------------------------------------
 
-clc; clear; 
+%clc; clear; 
 
 % Load parameters needed to build model
 BASParameters;
@@ -103,4 +103,6 @@ Tz1_y      = runModel(Z1m,[ 20 20 18 18 18 18 18]', Tsa,D,T);
 
 % Plot Results
 title={{'Zone 1 temperature (^oC)'},{'Input supply air (^oC)'}};
-plotFigures(1:T,[Tz1_y(1,1:T); Tsa(1:T)' ],title);
+plotFigures(1:T,[Tz1_y(1,1:T); Tsa(1:T)' ],title); 
+
+

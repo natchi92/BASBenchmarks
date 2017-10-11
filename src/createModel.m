@@ -73,18 +73,13 @@ classdef createModel
                 eval(['syms',' ','x',num2str(i),' ','real']);
                 eval(['syms',' ','x',num2str(i),'bar ','real']);
                 x=[x,'x',num2str(i),' '];
-                xbar=[xbar,'x',num2str(i),'bar '];
             end
             if x(end)==' '
                 x=x(1:end-1);
             end
             
-            if xbar(end)==' '
-                xbar=xbar(1:end-1);
-            end
-            
+           
             x_vec = eval(['[',x,']','''']);
-            xbar_vec=eval(['[',xbar,']','''']);
             
             
             u='';
@@ -188,8 +183,9 @@ classdef createModel
                 return;
             end
             
-            y      = zeros(size(sys.C,2),T);
             x      = zeros(size(sys.A,2),T);
+            y      = zeros(size(sys.C*x,1),T);
+
             s      = zeros(size(sys.A,2),T);
             switch size(sys.A,2)
                 case 1
@@ -747,6 +743,23 @@ classdef createModel
                     end
                 case 4
                     switch size(sys.F,2)
+                        case 0 
+                             if sys.Noise == 'd'
+                                x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),x_init(3,1),x_init(4,1),U(1,1));
+                            else
+                                x(:,1)= sys.tr(x_init(1,1),x_init(2,1),x_init(3,1),x_init(4,1),U(1,1),0, 0, 0,0);
+                            end
+                            
+                            for i = 1:T
+                                if sys.Noise == 'd'
+                                    x(:,i+1) = sys.tr(x(1,i),x(2,i),x(3,i),x(4,i), U(i,1));
+                                else
+                                    s(:,i) = sum(sys.dW((i-1)+1:i)); % Weiner Increment
+                                    x(:,i+1) = sys.tr(x(1,i),x(2,i),x(3,i),x(4,i),U(i,1),s(1,i),s(2,i),s(3,i),s(4,i));
+                                end
+                                
+                                y(:,i) = sys.C*x(:,i);
+                            end
                         case 1
                             if sys.Noise == 'd'
                                 x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),x_init(3,1),x_init(4,1),U(1,1),D(1,1));
@@ -764,6 +777,7 @@ classdef createModel
                                 
                                 y(:,i) = sys.C*x(:,i);
                             end
+
                         case 3
                             
                             x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),x_init(3,1),x_init(4,1),U(1,1),D(1,1),D(1,2),D(1,3));
@@ -802,9 +816,8 @@ classdef createModel
                             for i = 1:T
                                 
                                 x(:,i+1) = sys.tr(x(1,i),x(2,i),x(3,i),x(4,i), U(i,1), D(i,1),D(i,2),D(i,3),D(i,4),D(i,5),D(i,6));
-                                
-                                y(:,i) = sys.C*x(:,i);
                             end
+                            y = sys.C*x;
                     end
                     
                     

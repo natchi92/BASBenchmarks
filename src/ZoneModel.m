@@ -35,7 +35,7 @@ m = (Radiator.Zone1.Prad*Radiator.alpha1 + Zone.zeta)/Cz1;
 p = (Zone.alpha*Zone.A_w*Zone.iota/Ce1) + (1/(Rout*Ce1));
 q = (Zone.alpha*Zone.A_w*Zone.gamma/Ce1);
 
-Fc = [k 0 m; 0 p q];
+Fc = [k 0 m ; 0 p q];
 
 Cc = [1 0;0 1];
 

@@ -3,7 +3,7 @@
 % -------------------------------------------------------
 % x_d[k+1] = Ax_d[k] + Bu[k] + Q_d
 % y_d[k]   = [1 0 0 0; 0 1 0 0]
-% x_d = [T_z1 T_z2 T_rw,rad1 T_rw,rad2]^T
+% x_d = [T_z1 T_z1 T_rw,rad1 T_rw,rad2]^T
 % u   = T_sa
 % -------------------------------------------------------
 % -------------------------------------------------------
@@ -45,7 +45,7 @@ p = (Radiator.k0*w*Tswb);
 
 Fc = [d g k p]';
 
-Cc = ([1 1 0 0]);
+Cc = diag([1 1 0 0]);
 Z1m=createModel;
 
 % Creation of symbolic deterministic model
@@ -70,3 +70,5 @@ Tz1_y      = runModel(Z1m,[ 20 20 Trwrss Trwrss ]', Tsa,ones(T,1),T);
 % Plot Results
 title={{'Zone 1 temperature (^oC)'},{'Zone 2 temperature (^oC)'}};
 plotFigures(1:T,Tz1_y(1:2,1:T),title); 
+
+

@@ -2,11 +2,11 @@
 % disturbances
 % author: Nathalie Cauchi
 % -------------------------------------------------------
-% x_da[k+1] = Ax_da[k] + Bu[k] + F_dad[k] + Q_da
-% y_da[k]   = [1 0 0 0; 0 1 0 0]
-% x_da      = [T_z1 T_z2 T_rw,rad1 T_rw,rad2]^T
-% u         = T_sa
-% d_da      = [CO2_1 CO2_2]^T
+% x_d[k+1] = Ax_d[k] + Bu[k] + F_dad[k] + Q_d
+% y_d[k]   = [1 0 0 0; 0 1 0 0]
+% x_d = [T_z1 T_z1 T_rw,rad1 T_rw,rad2]^T
+% u   = T_sa
+% d   = [CO2_1 CO2_2]^T
 % -------------------------------------------------------
 % -------------------------------------------------------
 
@@ -53,7 +53,7 @@ Fc(2,3) = g;
 Fc(3,3) = k;
 Fc(4,3) = p;
 
-Cc = ([1 1 0 0]);
+Cc = diag([1 1 0 0]);
 Z1m=createModel;
 % Defining Deterministic Model corresponding matrices
 Z1m=InitialiseModel(Z1m,'l','d',Ac,Bc,Cc,Fc,[],[],Ts,0);
@@ -80,3 +80,4 @@ Tz1_y      = runModel(Z1m,[ 20  20 Trwrss Trwrss]', Tsa,D,T);
 % Plot Results
 title={{'Zone 1 temperature (^oC)'},{'Zone 2 temperature (^oC)'}};
 plotFigures(1:T,Tz1_y(1:2,1:T),title); 
+
