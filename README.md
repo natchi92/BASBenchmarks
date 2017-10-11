@@ -9,7 +9,7 @@ This repository hosts the instances and descriptions of the benchmarks. It inclu
 
 The repository is split into 2 folders: "doc" and "src". The "doc" folder contains details on the available source code found in "src" folder. The contents of each folder are further highlighted within an individual README file.
 
-We provide the paramters used to build the models within the "src" folder. The parameters where identified based on collected data within the BAS set-up within the Department of Computer Science, University of Oxford. Data from this set-up can be requested by sending an email/ writing a comment in this page. A description of the available data will be soon uploaded within the "doc" folder. 
+We provide the parameters used to build the models within the "src" folder. The parameters where identified based on collected data within the BAS set-up within the Department of Computer Science, University of Oxford. Data from this set-up can be requested by sending an email/ writing a comment in this page. A description of the available data will be soon uploaded within the "doc" folder. 
 
 Please do not forget to cite the publication! Thank you!
 
