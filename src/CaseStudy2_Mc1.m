@@ -25,7 +25,7 @@ w     = Radiator.w_r;
 
 % Defining Deterministic Model corresponding matrices
 Ac      = zeros(1);
-Ac(1,1) = -(1/(Zone1.Rout*Zone1.Cn))-Materials.air.Cpa*m1/Zone1.Cz - (Pout1*Radiator.alpha2)/Zone1.Cz;
+Ac(1,1) = -(1/(Zone1.Rout*Zone1.Cn))-Materials.air.Cpa*m1/Zone1.Cz - (Pout1*Radiator.alpha2)/Zone1.Cz -(AHU.rw.alpha3)/Zone1.Cn;
 
 Bc      = zeros(1,1);
 Bc(1,1) = m1*Materials.air.Cpa/Zone1.Cz;
@@ -36,7 +36,7 @@ Fc(1,2) = Zone1.mu/Zone1.Cz;
 Fc(1,3) = Pout1*Radiator.alpha2/Zone1.Cz;
 Fc(1,4) = (Pout1*Radiator.alpha1 + Zone1.zeta)/Zone1.Cz + Zone1.alpha*Zone1.A_w*Zone1.gamma/(Zone1.Cn) + (AHU.rw.alpha3*Trwass)/Zone1.Cn;
 
-Cc = ([1 ]);
+Cc = 1;
  
 % Creation of symbolic deterministic model
 Z1m=createModel;
