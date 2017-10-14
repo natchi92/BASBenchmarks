@@ -16,14 +16,14 @@ classdef createModel
         Type;         % Linear - 'l' / Bilinear - 'b'
         Noise;        % Deterministic -'d' / Stochastic - 's'
         A;            % A-matrix
-        B;
-        C;
-        F;
-        N;
-        tr;           % transitions function
-        dt;           % Discrete time step - Applying first order Euler (no weiner process)
-        sigma;
-        dW;
+        B;            % B-matrix
+        C;            % C-matrix
+        F;            % F-matrix (disturbances)
+        N;            % N-matrix (bilinear)
+        tr;           % Symbolic transitions function
+        dt;           % Discrete time step 
+        sigma;        % Variance
+        dW;           % Weiner increments
     end
     
     methods
@@ -53,7 +53,7 @@ classdef createModel
             obj.dim_u  = size(B,2);
             obj.dim_d  = size(F,2);
             
-            %%% Discretize matrices
+            %%% Discretise matrices
             obj.A = eye(size(A)) + obj.dt.*obj.A;
             obj.B = obj.dt.*obj.B;
             obj.F = obj.dt.*obj.F;
@@ -67,6 +67,7 @@ classdef createModel
         function sys = createSymbModel(obj)
             sys = obj;
             
+            % Defining symbols for states vector
             x='';xbar='';
             
             for i=1:obj.dim
@@ -77,11 +78,10 @@ classdef createModel
             if x(end)==' '
                 x=x(1:end-1);
             end
-            
-           
+                     
             x_vec = eval(['[',x,']','''']);
             
-            
+            % Defining symbols for input vector
             u='';
             if obj.dim_u >0
                 for i=1:obj.dim_u
@@ -112,6 +112,7 @@ classdef createModel
                 
             end
             
+            % Defining symbols for disturbance vector
             d='';
             
             if obj.dim_d >0
@@ -168,7 +169,7 @@ classdef createModel
         end
         %%%%%%%%% Execute model over time T %%%%%%%%%%%%
         function y = runModel(sys,x_init, U,D,  T)
-            
+            % Check if input signals are of correct dimensions
             if size(sys.A,2) ~= size(x_init,1)
                 disp('Incorrect initial conditions');
                 return;
@@ -185,7 +186,6 @@ classdef createModel
             
             x      = zeros(size(sys.A,2),T);
             y      = zeros(size(sys.C*x,1),T);
-
             s      = zeros(size(sys.A,2),T);
             switch size(sys.A,2)
                 case 1
@@ -393,12 +393,71 @@ classdef createModel
                     end
                 case 2
                     switch size(sys.B,2)
-                        case 0
-                            x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),D(1,1),D(1,2),D(1,3));
-                            for i = 1:T
-                                x(:,i+1) = sys.tr(x(1,i),x(2,i),D(i,1),D(i,2),D(i,3));
-                            end
-                            y = sys.C*x;
+                         case 0
+                             switch size(sys.F,2)
+                                case 0
+                                    if sys.Noise == 'd'
+                                     x(:,1)=  sys.tr(x_init(1,1),x_init(2,1));
+ 
+                                    else
+                                        x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),0,0);
+                                    end
+                                    for i = 1:T
+                                        if sys.Noise == 'd'
+                                            x(:,i+1) = sys.tr(x(1,i),x(2,i));
+                                        else
+                                            s(:,i) = sum(sys.dW((i-1)+1:i)); % Weiner Increment
+                                            x(:,i+1) = sys.tr(x(1,i),x(2,i),U(i,1),s(1,i),s(2,i));
+                                        end
+                                        y(:,i) = sys.C*x(:,i);
+                                    end                          
+                                case 1
+                                    if sys.Noise == 'd'
+                                         x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),D(1,1));
+                                    else
+                                         x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),D(1,1),0,0);                           
+                                    end
+                                    for i = 1:T
+                                        if sys.Noise == 'd'
+                                            x(:,i+1) = sys.tr(x(1,i),x(2,i),D(i,1));
+                                        else
+                                            s(:,i) = sum(sys.dW((i-1)+1:i)); % Weiner Increment
+                                            x(:,i+1) = sys.tr(x(1,i),x(2,i),D(i,1),s(1,i),s(2,i));
+                                        end
+                                        y(:,i) = sys.C*x(:,i);
+                                    end
+                                 case 2
+                                    if sys.Noise == 'd'
+                                         x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),D(1,1),D(1,2));
+                                    else
+                                         x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),D(1,1),D(1,2),0,0);                           
+                                    end
+                                    for i = 1:T
+                                        if sys.Noise == 'd'
+                                            x(:,i+1) = sys.tr(x(1,i),x(2,i),D(i,1),D(i,2));
+                                        else
+                                            s(:,i) = sum(sys.dW((i-1)+1:i)); % Weiner Increment
+                                            x(:,i+1) = sys.tr(x(1,i),x(2,i),D(i,1),D(i,2),s(1,i),s(2,i));
+                                        end
+                                        y(:,i) = sys.C*x(:,i);
+                                    end
+                                     
+                                 case 3
+                                    if sys.Noise == 'd'
+                                         x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),D(1,1),D(1,2),D(1,3));
+                                    else
+                                         x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),D(1,1),D(1,2),D(1,3),0,0);                           
+                                    end
+                                    for i = 1:T
+                                        if sys.Noise == 'd'
+                                            x(:,i+1) = sys.tr(x(1,i),x(2,i),D(i,1),D(i,2),D(i,3));
+                                        else
+                                            s(:,i) = sum(sys.dW((i-1)+1:i)); % Weiner Increment
+                                            x(:,i+1) = sys.tr(x(1,i),x(2,i),D(i,1),D(i,2),D(i,3),s(1,i),s(2,i));
+                                        end
+                                        y(:,i) = sys.C*x(:,i);
+                                    end
+                             
                             
                         case 1
                             switch size(sys.F,2)
@@ -406,7 +465,7 @@ classdef createModel
                                     if sys.Noise == 'd'
                                         x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),U(1,1));
                                     else
-                                        x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),U(1,1),[0 0]);
+                                        x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),U(1,1),0,0);
                                     end
                                     for i = 1:T
                                         if sys.Noise == 'd'
@@ -451,7 +510,7 @@ classdef createModel
                                     if sys.Noise == 'd'
                                         x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),U(1,1),D(1,1),D(1,2),D(1,3));
                                     else
-                                        x(:,1)= sys.tr(x_init(1,1),x_init(2,1),U(1,1),D(1,1),D(1,2),D(1,3),[0 0]);
+                                        x(:,1)= sys.tr(x_init(1,1),x_init(2,1),U(1,1),D(1,1),D(1,2),D(1,3),0,0);
                                     end
                                     for i = 1:T
                                         if sys.Noise == 'd'
@@ -467,7 +526,7 @@ classdef createModel
                                     if sys.Noise == 'd'
                                         x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4));
                                     else
-                                        x(:,1)= sys.tr(x_init(1,1),x_init(2,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),[0 0]);
+                                        x(:,1)= sys.tr(x_init(1,1),x_init(2,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),0,0);
                                     end
                                     for i = 1:T
                                         if sys.Noise == 'd'
@@ -483,7 +542,7 @@ classdef createModel
                                     if sys.Noise == 'd'
                                         x(:,1)=  sys.tr(x_init(1,1),x_init(2,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),D(1,5));
                                     else
-                                        x(:,1)= sys.tr(x_init(1,1),x_init(2,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),D(1,5),[0 0]);
+                                        x(:,1)= sys.tr(x_init(1,1),x_init(2,1),U(1,1),D(1,1),D(1,2),D(1,3),D(1,4),D(1,5),0,0);
                                     end
                                     for i = 1:T
                                         if sys.Noise == 'd'
