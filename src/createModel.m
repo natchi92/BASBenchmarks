@@ -458,7 +458,7 @@ classdef createModel
                                         y(:,i) = sys.C*x(:,i);
                                     end
                              
-                            
+                             end
                         case 1
                             switch size(sys.F,2)
                                 case 0
@@ -994,4 +994,3 @@ classdef createModel
     end
     
 end
-
