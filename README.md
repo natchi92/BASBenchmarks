@@ -11,6 +11,4 @@ The repository is split into 2 folders: "doc" and "src". The "doc" folder contai
 
 We provide the parameters used to build the models within the "src" folder. The parameters were identified based on collected data within the BAS set-up within the Department of Computer Science, University of Oxford. Data from this set-up can be requested by sending an email to nathalie.cauchi@cs.ox.ac.uk. A description of the available data will be soon uploaded within the "doc" folder. 
 
-Please do not forget to cite the publication! Thank you!
-
 Keywords: Cyber-physical systems, building automation systems, thermal modelling, hybrid models, simulation, reachability analysis, probabilistic safety, control synthesis
