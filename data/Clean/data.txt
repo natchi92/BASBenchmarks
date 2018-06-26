@@ -1,0 +1,169 @@
+cd ~/Downloads/
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT AHU1SupplyTemp.csv -o AHU1SupplyTemp_1.csv
+echo "$(tail -n +2 AHU1SupplyTemp_1.csv)" > AHU1SupplyTemp2.csv
+sort -t " " -k1 AHU1SupplyTemp2.csv -o AHU1SupplyTemp2.csv
+uniq  AHU1SupplyTemp2.csv AHU1SupplyTemp_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478SpaceTemp1.csv -o Room478SpaceTemp11.csv
+echo "$(tail -n +2 Room478SpaceTemp11.csv)" > Room478SpaceTemp12.csv
+sort -t " " -k1 Room478SpaceTemp12.csv -o Room478SpaceTemp12.csv
+uniq  Room478SpaceTemp12.csv Room478SpaceTemp1_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT OutsideAirTempiconv -o OutsideAirTemp11.csv
+echo "$(tail -n +2 OutsideAirTemp11.csv)" > OutsideAirTemp12.csv
+sort -t " " -k1 OutsideAirTemp12.csv -o OutsideAirTemp12.csv
+uniq  OutsideAirTemp12.csv OutsideAirTemp_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT FCU478FanSpeedOutput.csv -o FCU478FanSpeedOutput1.csv
+echo "$(tail -n +2 FCU478FanSpeedOutput1.csv)" > FCU478FanSpeedOutput2.csv
+sort -t " " -k1 FCU478FanSpeedOutput2.csv -o FCU478FanSpeedOutput2.csv
+uniq  FCU478FanSpeedOutput2.csv FCU478FanSpeedOutput_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT FCU479FanSpeedOutput.csv -o FCU479FanSpeedOutput1.csv
+echo "$(tail -n +2 FCU479FanSpeedOutput1.csv)" > FCU479FanSpeedOutput2.csv
+sort -t " " -k1 FCU479FanSpeedOutput2.csv -o FCU479FanSpeedOutput2.csv 
+uniq FCU479FanSpeedOutput2.csv  FCU479FanSpeedOutput_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Radiatorflowtemp.csv -o Radiatorflowtemp1.csv
+echo "$(tail -n +2 Radiatorflowtemp1.csv)" > Radiatorflowtemp2.csv
+sort -t " " -k1 Radiatorflowtemp2.csv  -o Radiatorflowtemp2.csv 
+uniq Radiatorflowtemp2.csv Radiatorflowtemp_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478AverageSpaceCo2.csv -o Room478AverageSpaceCo2_1.csv
+echo "$(tail -n +2 Room478AverageSpaceCo2_1.csv)" > Room478AverageSpaceCo22.csv
+sort -t " " -k1 Room478AverageSpaceCo22.csv -o Room478AverageSpaceCo22.csv 
+uniq Room478AverageSpaceCo22.csv  Room478AverageSpaceCo2_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479AverageSpaceCo2.csv -o Room479AverageSpaceCo2_1.csv
+echo "$(tail -n +2 Room479AverageSpaceCo2_1.csv)" > Room479AverageSpaceCo22.csv
+sort -t " " -k1 Room479AverageSpaceCo22.csv -o Room479AverageSpaceCo22.csv 
+uniq Room479AverageSpaceCo22.csv Room479AverageSpaceCo2_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478AverageSpaceTemp.csv -o Room478AverageSpaceTemp_1.csv
+echo "$(tail -n +2 Room478AverageSpaceTemp_1.csv)" > Room478AverageSpaceTemp2.csv
+sort -t " " -k1 Room478AverageSpaceTemp2.csv -o Room478AverageSpaceTemp2.csv 
+uniq Room478AverageSpaceTemp2.csv Room478AverageSpaceTemp_cln.txt
+
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479AverageSpaceTemp.csv -o Room479AverageSpaceTemp_1.csv
+echo "$(tail -n +2 Room479AverageSpaceTemp_1.csv)" > Room479AverageSpaceTemp2.csv
+sort -t " " -k1 Room479AverageSpaceTemp2.csv -o Room479AverageSpaceTemp2.csv
+uniq Room479AverageSpaceTemp2.csv Room479AverageSpaceTemp_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478AveSpaceHumidity.csv -o Room478AveSpaceHumidity_1.csv
+echo "$(tail -n +2 Room478AveSpaceHumidity_1.csv)" > Room478AveSpaceHumidity2.csv
+sort -t " " -k1 Room478AveSpaceHumidity2.csv -o Room478AveSpaceHumidity2.csv 
+uniq Room478AveSpaceHumidity2.csv Room478AveSpaceHumidity_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479AveSpaceHumidity.csv -o Room479AveSpaceHumidity_1.csv
+echo "$(tail -n +2 Room479AveSpaceHumidity_1.csv)" > Room479AveSpaceHumidity2.csv
+sort -t " " -k1 Room479AveSpaceHumidity2.csv -o Room479AveSpaceHumidity2.csv 
+uniq Room479AveSpaceHumidity2.csv Room479AveSpaceHumidity_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478FanSpeed.csv -o Room478FanSpeed_1.csv
+echo "$(tail -n +2 Room478FanSpeed_1.csv)" > Room478FanSpeed2.csv
+sort -t " " -k1 Room478FanSpeed2.csv -o Room478FanSpeed2.csv
+uniq Room478FanSpeed2.csv Room478FanSpeed_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479FanSpeed.csv -o Room479FanSpeed_1.csv
+echo "$(tail -n +2 Room479FanSpeed_1.csv)" > Room479FanSpeed2.csv
+sort -t " " -k1 Room479FanSpeed2.csv -o Room479FanSpeed2.csv
+uniq Room479FanSpeed2.csv Room479FanSpeed_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478HeatingSP.csv -o Room478HeatingSP_1.csv
+echo "$(tail -n +2 Room478HeatingSP_1.csv)" > Room478HeatingSP2.csv
+sort -t " " -k1 Room478HeatingSP2.csv -o Room478HeatingSP2.csv
+uniq Room478HeatingSP2.csv Room478HeatingSP_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479HeatingSP.csv -o Room479HeatingSP_1.csv
+echo "$(tail -n +2 Room479HeatingSP_1.csv)" > Room479HeatingSP2.csv
+sort -t " " -k1 Room479HeatingSP2.csv -o Room479HeatingSP2.csv
+uniq Room479HeatingSP2.csv Room479HeatingSP_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478SpaceCo21.csv -o Room478SpaceCo21_1.csv
+echo "$(tail -n +2 Room478SpaceCo21_1.csv)" > Room478SpaceCo212.csv
+sort -t " " -k1 Room478SpaceCo212.csv -o Room478SpaceCo212.csv
+uniq Room478SpaceCo212.csv Room478SpaceCo21_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478SpaceCo22.csv -o Room478SpaceCo22_1.csv
+echo "$(tail -n +2 Room478SpaceCo22_1.csv)" > Room478SpaceCo222.csv
+sort -t " " -k1 Room478SpaceCo222.csv -o Room478SpaceCo222.csv
+uniq Room478SpaceCo222.csv Room478SpaceCo22_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479SpaceCo21.csv -o Room479SpaceCo21_1.csv
+echo "$(tail -n +2 Room479SpaceCo21_1.csv)" > Room479SpaceCo212.csv
+sort -t " " -k1 Room479SpaceCo212.csv -o Room479SpaceCo212.csv 
+uniq Room479SpaceCo212.csv Room479SpaceCo21_cln.csv
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479SpaceCo22.csv -o Room479SpaceCo22_1.csv
+echo "$(tail -n +2 Room479SpaceCo22_1.csv)" > Room479SpaceCo222.csv
+sort -t " " -k1 Room479SpaceCo222.csv -o Room479SpaceCo222.csv
+uniq Room479SpaceCo222.csv Room479SpaceCo22_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478SpaceHumidity1.csv -o Room478SpaceHumidity1_1.csv
+echo "$(tail -n +2 Room478SpaceHumidity1_1.csv)" > Room478SpaceHumidity12.csv
+sort -t " " -k1 Room478SpaceHumidity12.csv -o Room478SpaceHumidity12.csv
+uniq Room478SpaceHumidity12.csv Room478SpaceHumidity1_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478SpaceHumidity2.csv -o Room478SpaceHumidity2_1.csv
+echo "$(tail -n +2 Room478SpaceHumidity2_1.csv)" > Room478SpaceHumidity22.csv
+sort -t " " -k1  Room478SpaceHumidity22.csv -o Room478SpaceHumidity22.csv 
+uniq  Room478SpaceHumidity22.csv Room478SpaceHumidity2_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479SpaceHumidity1.csv -o Room479SpaceHumidity1_1.csv
+echo "$(tail -n +2 Room479SpaceHumidity1_1.csv)" > Room479SpaceHumidity12.csv
+sort -t " " -k1 Room479SpaceHumidity12.csv -o Room479SpaceHumidity12.csv 
+uniq Room479SpaceHumidity12.csv Room479SpaceHumidity1_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479SpaceHumidity2.csv -o Room479SpaceHumidity2_1.csv
+echo "$(tail -n +2 Room479SpaceHumidity2_1.csv)" > Room479SpaceHumidity22.csv
+sort -t " " -k1 Room479SpaceHumidity22.csv -o Room479SpaceHumidity22.csv 
+uniq Room479SpaceHumidity22.csv Room479SpaceHumidity2_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478SpaceTemp2.csv -o Room478SpaceTemp2_1.csv
+echo "$(tail -n +2 Room478SpaceTemp2_1.csv)" > Room478SpaceTemp22.csv
+sort -t " " -k1 Room478SpaceTemp22.csv -o Room478SpaceTemp22.csv 
+uniq Room478SpaceTemp22.csv Room478SpaceTemp2_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478SpaceTemp3.csv -o Room478SpaceTemp3_1.csv
+echo "$(tail -n +2 Room478SpaceTemp3_1.csv)" > Room478SpaceTemp32.csv
+sort -t " " -k1 Room478SpaceTemp32.csv -o Room478SpaceTemp32.csv 
+uniq Room478SpaceTemp32.csv Room478SpaceTemp3_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479SpaceTemp2.csv -o Room479SpaceTemp2_1.csv
+echo "$(tail -n +2 Room479SpaceTemp2_1.csv)" > Room479SpaceTemp22.csv
+sort -t " " -k1 Room479SpaceTemp22.csv -o Room479SpaceTemp22.csv 
+uniq Room479SpaceTemp22.csv Room479SpaceTemp2_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479SpaceTemp3.csv -o Room479SpaceTemp3_1.csv
+echo "$(tail -n +2 Room479SpaceTemp3_1.csv)" > Room479SpaceTemp32.csv
+sort -t " " -k1 Room479SpaceTemp32.csv -o Room479SpaceTemp32.csv
+uniq Room479SpaceTemp32.csv Room479SpaceTemp3_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479SpaceTemp1.csv -o Room479SpaceTemp1_1.csv
+echo "$(tail -n +2 Room479SpaceTemp1_1.csv)" > Room479SpaceTemp12.csv
+sort -t " " -k1 Room479SpaceTemp12.csv -o Room479SpaceTemp12.csv 
+uniq Room479SpaceTemp12.csv Room479SpaceTemp1_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478SPAdjust_Override.csv -o Room478SPAdjust_Override_1.csv
+echo "$(tail -n +2 Room478SPAdjust_Override_1.csv)" > Room478SPAdjust_Override2.csv
+sort -t " " -k1 Room478SPAdjust_Override2.csv -o Room478SPAdjust_Override2.csv
+uniq Room478SPAdjust_Override2.csv Room478SPAdjust_Override_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479SPAdjust_Override.csv -o Room4798SPAdjust_Override_1.csv
+echo "$(tail -n +2 Room479SPAdjust_Override_1.csv)" > Room479SPAdjust_Override2.csv
+sort -t " " -k1 Room479SPAdjust_Override2.csv -o Room479SPAdjust_Override2.csv
+uniq Room479SPAdjust_Override2.csv Room479SPAdjust_Override_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room478TrimmedSetpoint.csv -o Room478TrimmedSetpoint_1.csv
+echo "$(tail -n +2 Room478TrimmedSetpoint_1.csv)" > Room478TrimmedSetpoint2.csv
+sort -t " " -k1 Room478TrimmedSetpoint2.csv -o Room478TrimmedSetpoint2.csv 
+uniq Room478TrimmedSetpoint2.csv Room478TrimmedSetpoint_cln.txt
+
+iconv -f ISO-8859-1 -t UTF-16//TRANSLIT Room479TrimmedSetpoint.csv -o Room479TrimmedSetpoint_1.csv
+echo "$(tail -n +2 Room479TrimmedSetpoint_1.csv)" > Room479TrimmedSetpoint2.csv
+sort -t " " -k1 Room479TrimmedSetpoint2.csv -o Room479TrimmedSetpoint2.csv 
+uniq Room479TrimmedSetpoint2.csv Room479TrimmedSetpoint_cln.txt
+
+
+
