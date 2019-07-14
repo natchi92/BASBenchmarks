@@ -67,10 +67,10 @@ Radiator.rw.sigma   = 0.1;
 %--------- Zone Parameters    -------%
 %--------- Zone 1             -------%
 
-Zone1.Cz   =  154.5608;                                                      % Thermal capacitance of zone [J/kgK]
+Zone1.Cz   =  51.5203;                                                       % Thermal capacitance of zone [J/kgK]
 Zone1.Cn   =  52.3759;                                                       % Thermal capacitance of neighbouring wall [J/kgK]
 Zone1.Rout =  7.20546;                                                       % Resistance of walls connected to outside [K/W]
-Zone1.Rn   =  27.088;                                                        % Resistance of walls connected to neighbouring wall [K/W]
+Zone1.Rn   =  5.4176;                                                        % Resistance of walls connected to neighbouring wall [K/W]
 Zone1.mu   =  0.000199702104146;                                             % Q_occ coefficient in \muCO_2 + \zeta [-]
 Zone1.zeta =  0.188624079752965;
 Zone1.alpha=  0.044;                                                         % Absorptivity coefficient of wall [W/m2K]
@@ -84,10 +84,10 @@ Zone1.Tz.sigma = 0.02;
 Zone1.Te.sigma = 0.01;
 
 %--------- Zone 2             -------%
-Zone2.Cz   =  150.7311;                                                      % Thermal capacitance of zone [J/kgK]
+Zone2.Cz   =  50.2437;                                                       % Thermal capacitance of zone [J/kgK]
 Zone2.Cn   =  53.3759;                                                       % Thermal capacitance of neighbouring wall [J/kgK]
 Zone2.Rout =  7.4513;                                                        % Resistance of walls connected to outside [K/W]
-Zone2.Rn   =  28.9760;                                                       % Resistance of walls connected to neighbouring wall [K/W]
+Zone2.Rn   =  5.7952;                                                        % Resistance of walls connected to neighbouring wall [K/W]
 Zone2.mu   =  5.805064e-6;                                                   % Q_occ coefficient in \muCO_2 + \zeta [-]
 Zone2.zeta =  -0.003990;
 Zone2.alpha=  0.044;                                                         % Absorptivity coefficient of wall [W/m2K]
